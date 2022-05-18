@@ -1,12 +1,39 @@
-let nodePath = process.argv[0];
-let appPath = process.argv[1];
-let name = process.argv[2];
-let age = process.argv[3];
+// const express = require("express");
+  
+// const app = express();
+// app.get("/", function(request, response){
+      
+//     response.send("<h1>Главная страница</h1>");
+// });
+// app.use("/about", function(request, response){
+      
+//     let id = request.query.id;
+//     let userName = request.query.name;
+//     response.send("<h1>Информация</h1><p>id=" + id +"</p><p>name=" + userName + "</p>");
+// });
+ 
+// app.listen(3000);
 
-console.log("nodePath: " + nodePath);
-console.log("appPath: " + appPath);
-console.log();
-console.log("name: " + name);
-console.log("age: " + age);
+// http://localhost:3000/about?id=3&name=Tome&id=3&name=Tome
 
-// node app.js Tom 23
+
+const express = require("express");
+  
+const app = express();
+app.get("/", function(request, response){
+      
+    response.send("<h1>Главная страница</h1>");
+});
+app.use("/about", function(request, response){
+      
+    console.log(request.query);
+    let names = request.query.name;
+    let responseText = "<ul>";
+    for(let i=0; i < names.length; i++){
+        responseText += "<li>" + names[i] + "</li>";
+    }
+    responseText += "</ul>";
+    response.send(responseText);
+});
+ 
+// http://localhost:3000/about?id=3&name=Tome&id=3&name=Tome&id=3&name=Tome
