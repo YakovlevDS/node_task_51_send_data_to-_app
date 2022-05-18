@@ -35,5 +35,6 @@ app.use("/about", function(request, response){
     responseText += "</ul>";
     response.send(responseText);
 });
+app.listen(3000);
  
 // http://localhost:3000/about?id=3&name=Tome&id=3&name=Tome&id=3&name=Tome
